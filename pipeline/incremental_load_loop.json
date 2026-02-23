@@ -3,17 +3,19 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ForEach1",
+				"name": "LoopTables",
 				"type": "ForEach",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.loop_input",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "AzureSqlToLake",
 							"type": "Copy",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "LastCDC",
@@ -147,8 +149,6 @@
 						{
 							"name": "hasIncremental",
 							"type": "IfCondition",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "AzureSqlToLake",
