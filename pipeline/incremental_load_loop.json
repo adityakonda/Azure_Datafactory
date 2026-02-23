@@ -12,6 +12,8 @@
 						{
 							"name": "AzureSqlToLake",
 							"type": "Copy",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "LastCDC",
@@ -145,6 +147,8 @@
 						{
 							"name": "hasIncremental",
 							"type": "IfCondition",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "AzureSqlToLake",
@@ -201,6 +205,8 @@
 									{
 										"name": "updateLastCdc",
 										"type": "Copy",
+										"state": "Inactive",
+										"onInactiveMarkAs": "Succeeded",
 										"dependsOn": [
 											{
 												"activity": "MaxCdc",
